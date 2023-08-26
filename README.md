@@ -16,10 +16,13 @@ pkg install xf86-video-vmware xf86-input-vmmouse open-vm-tools
 cd /usr/ports/emulators/virtualbox-ose-additions && make install clean
 ```
 
+### Adicionando o seu usuário no grupo `vboxusers`
+
 ```bash
 pw groupmod vboxusers -m yourusername
 ```
 
+### Carregando o driver `vboxdrv`
 
 ```bash
 kldload vboxdrv
