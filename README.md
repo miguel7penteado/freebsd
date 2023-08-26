@@ -259,13 +259,34 @@ EOF
 
 ### Instalando suporte a fontes True Type1
 
+Instalar o pacote `urwfonts`
 ```bash
 pkg install urwfonts
 ```
 
+Acrescentar o caminho a seguir junto às outras fontes no arquivo xorg.conf
+
+```bash
+Section "Files"
+# ...
+		FontPath     "/usr/local/share/fonts/urwfonts/"
+# ...
+EndSection
+```
+
+Instalar o pacote `mkfontscale`
 ```bash
 pkg install mkfontscale
 ```
 
+Acrescentar o caminho a seguir junto às outras fontes no arquivo xorg.conf
+
+```bash
+Section "Files"
+# ...
+		FontPath     "/usr/local/share/fonts/TrueType"
+# ...
+EndSection
+```
 
 
