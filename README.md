@@ -1,10 +1,18 @@
 # Instalando o FreeBSD
 
-### Versão 13.x 
+## Modulos do Kernel
+
+No kernel do FreeBSD, os nomes dos arquivos dos mÃ³dulos do kernel tÃªm uma extensÃ£o `.ko`.
+
+No FreeBSD, os mÃ³dulos padrÃ£o do kernel estÃ£o localizados em /boot/kernel.
+
+O FreeBSD usa `kldload`, `kldunload` e `kldstat` para carregar, descarregar e visualizar detalhes, respectivamente.
+
+### VersÃ£o 13.x 
 
 ## VirtualBox
 
-### Instalando pacotes de suporte a virtualização ao servidor xorg
+### Instalando pacotes de suporte a virtualizaÃ§Ã£o ao servidor xorg
 
 ```bash
 pkg install xf86-video-vmware xf86-input-vmmouse open-vm-tools
@@ -16,7 +24,7 @@ pkg install xf86-video-vmware xf86-input-vmmouse open-vm-tools
 cd /usr/ports/emulators/virtualbox-ose-additions && make install clean
 ```
 
-### Adicionando o seu usuário no grupo `vboxusers`
+### Adicionando o seu usuÃ¡rio no grupo `vboxusers`
 
 ```bash
 pw groupmod vboxusers -m yourusername
@@ -28,7 +36,7 @@ pw groupmod vboxusers -m yourusername
 kldload vboxdrv
 ```
 
-### Carregando os drivers do virtualbox na inicialização do sistema
+### Carregando os drivers do virtualbox na inicializaÃ§Ã£o do sistema
 
 ```bash
 echo 'vboxguest_enable="YES"' >> /etc/rc.conf
@@ -36,7 +44,7 @@ echo 'vboxservice_enable="YES"' >> /etc/rc.conf
 echo 'vboxservice_flags="--disable-timesync"' >> /etc/rc.conf
 ```
 
-### Ativando a rede do virtualbox na inicialização do sistema
+### Ativando a rede do virtualbox na inicializaÃ§Ã£o do sistema
 
 Carregando o driver de rede do virtualbox
 ```bash
@@ -61,7 +69,7 @@ echo 'perm    vboxnetctl 0660'           >> /etc/devfs.conf
 
 ### Ativando o acesso do virtualbox nos dispositivos USB
 
-Adicionando o seu usuário no grupo `operator`
+Adicionando o seu usuÃ¡rio no grupo `operator`
 ```bash
 pw groupmod operator -m yourusername
 ```
@@ -74,7 +82,7 @@ add path 'usb/*' mode 0660 group operator
 EOF
 ```
 
-Salvando as regras do devfs na inicialização do sistema
+Salvando as regras do devfs na inicializaÃ§Ã£o do sistema
 ```bash
 echo 'devfs_system_ruleset="system"'  >> /etc/rc.conf
 ```
@@ -113,7 +121,7 @@ pkg install libva-intel-driver mesa-libs mesa-dri cmrt libva libva-intel-driver 
 
 
 
-### Adicionando o seu usuário no grupo `video`
+### Adicionando o seu usuÃ¡rio no grupo `video`
 
 ```bash
 pw groupmod video -m username
@@ -132,7 +140,7 @@ echo "sysrc kld_list+=i915kms" >> /etc/rc.conf
 ```
 
 
-### Arquivo de configuração do xorg: xorg.conf
+### Arquivo de configuraÃ§Ã£o do xorg: xorg.conf
 
 ```bash
 pciconf -lv|grep -B4 VGA
@@ -181,7 +189,7 @@ EndSection
 Section "Monitor"
         Identifier "Monitor0"
         Option "VendorName" "HP"
-        Option "ModelName" "Monitor genérico"
+        Option "ModelName" "Monitor genÃ©rico"
         Option "DPMS" "true"
         Modeline "1280x800_60.00"   83.50  1280 1352 1480 1680   800  803  809  831 -hsync +vsync #(49.7 kHz UP)
     Modeline "1280x800_59.08"   83.50  1280 1352 1480 1680   800  803  809  831 -hsync +vsync #(49.7 kHz UP)
@@ -267,7 +275,7 @@ Instalar o pacote `urwfonts`
 pkg install urwfonts
 ```
 
-Acrescentar o caminho a seguir junto às outras fontes no arquivo xorg.conf
+Acrescentar o caminho a seguir junto Ã s outras fontes no arquivo xorg.conf
 
 ```bash
 Section "Files"
@@ -282,7 +290,7 @@ Instalar o pacote `mkfontscale`
 pkg install mkfontscale
 ```
 
-Acrescentar o caminho a seguir junto às outras fontes no arquivo xorg.conf
+Acrescentar o caminho a seguir junto Ã s outras fontes no arquivo xorg.conf
 
 ```bash
 Section "Files"
